@@ -140,7 +140,7 @@ class ElasticTransformationScipy(iaa.ElasticTransformation):
                              + "got order=%d with dtype=%s.") % (order, image.dtype.name))
 
         input_dtype = image.dtype
-        if image.dtype.name == "bool":
+        if image.dtype.name == "bool_":
             image = image.astype(np.float32)
         elif order == 1 and image.dtype.name in ["int8", "int16", "int32"]:
             image = image.astype(np.float64)
@@ -152,12 +152,12 @@ class ElasticTransformationScipy(iaa.ElasticTransformation):
         shrt_max = 32767
         backend = "cv2"
         if order == 0:
-            bad_dtype_cv2 = (image.dtype.name in ["uint32", "uint64", "int64", "float128", "bool"])
+            bad_dtype_cv2 = (image.dtype.name in ["uint32", "uint64", "int64", "float128", "bool_"])
         elif order == 1:
             bad_dtype_cv2 = (image.dtype.name in ["uint32", "uint64", "int8", "int16", "int32", "int64", "float128",
-                                                  "bool"])
+                                                  "bool_"])
         else:
-            bad_dtype_cv2 = (image.dtype.name in ["uint32", "uint64", "int8", "int32", "int64", "float128", "bool"])
+            bad_dtype_cv2 = (image.dtype.name in ["uint32", "uint64", "int8", "int32", "int64", "float128", "bool_"])
 
         bad_dx_shape_cv2 = (dx.shape[0] >= shrt_max or dx.shape[1] >= shrt_max)
         bad_dy_shape_cv2 = (dy.shape[0] >= shrt_max or dy.shape[1] >= shrt_max)
@@ -235,7 +235,7 @@ class ElasticTransformationCv2(iaa.ElasticTransformation):
                              + "got order=%d with dtype=%s.") % (order, image.dtype.name))
 
         input_dtype = image.dtype
-        if image.dtype.name == "bool":
+        if image.dtype.name == "bool_":
             image = image.astype(np.float32)
         elif order == 1 and image.dtype.name in ["int8", "int16", "int32"]:
             image = image.astype(np.float64)
@@ -247,12 +247,12 @@ class ElasticTransformationCv2(iaa.ElasticTransformation):
         shrt_max = 32767
         backend = "cv2"
         if order == 0:
-            bad_dtype_cv2 = (image.dtype.name in ["uint32", "uint64", "int64", "float128", "bool"])
+            bad_dtype_cv2 = (image.dtype.name in ["uint32", "uint64", "int64", "float128", "bool_"])
         elif order == 1:
             bad_dtype_cv2 = (image.dtype.name in ["uint32", "uint64", "int8", "int16", "int32", "int64", "float128",
-                                                  "bool"])
+                                                  "bool_"])
         else:
-            bad_dtype_cv2 = (image.dtype.name in ["uint32", "uint64", "int8", "int32", "int64", "float128", "bool"])
+            bad_dtype_cv2 = (image.dtype.name in ["uint32", "uint64", "int8", "int32", "int64", "float128", "bool_"])
 
         bad_dx_shape_cv2 = (dx.shape[0] >= shrt_max or dx.shape[1] >= shrt_max)
         bad_dy_shape_cv2 = (dy.shape[0] >= shrt_max or dy.shape[1] >= shrt_max)

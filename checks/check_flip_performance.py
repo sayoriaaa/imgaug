@@ -91,7 +91,7 @@ def main():
         else COMMANDS_VERTICAL_FLIPS)
 
     number = 10000
-    for dt in ["bool",
+    for dt in ["bool_",
                "uint8", "uint16", "uint32", "uint64",
                "int8", "int16", "int32", "int64",
                "float16", "float32", "float64", "float128"]:

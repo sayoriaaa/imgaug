@@ -2913,7 +2913,7 @@ class TestNormalization(unittest.TestCase):
         assert ntype == "array[bool]"
 
         ntype = normalization._nonempty_info_to_type_str(
-            np.zeros((4, 4, 3), dtype=np.dtype("complex")), True, [])
+            np.zeros((4, 4, 3), dtype=np.dtype("complex128")), True, [])
         assert ntype == "array[c]"
 
         ntype = normalization._nonempty_info_to_type_str(
